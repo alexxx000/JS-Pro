@@ -37,18 +37,20 @@ class GoodsList {
       { title: "Socks", price: 50 },
       { title: "Jacket", price: 350 },
       { title: "Shoes", price: 250 },
+      { title: "Teams", price: 450 },
     ];
   }
 
   render() {
     let listHtml = "";
     this.goods.forEach((good) => {
+      //good принимает массив
       const goodItem = new GoodsItem(good.title, good.price);
       listHtml += goodItem.render();
     });
     document.querySelector(".goods-list").innerHTML = listHtml;
   }
-  GoodsList() {
+  summList() {
     let summHtml = this.goods.reduce((accum, item) => (accum += item.price), 0);
     document.querySelector(
       ".goods-summ"
@@ -59,4 +61,4 @@ class GoodsList {
 const list = new GoodsList();
 list.fetchGoods();
 list.render();
-list.GoodsList();
+list.summList();
